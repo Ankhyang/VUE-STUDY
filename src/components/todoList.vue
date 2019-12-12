@@ -21,11 +21,10 @@ export default {
 
 <style scoped>
   .todo-main {
-    margin-left: 0px;
-    border-radius: 2px;
     padding: 0px;
+    width: 500px;
+    margin: 0 auto;
   }
-
   .todo-empty {
     height: 40px;
     line-height: 40px;

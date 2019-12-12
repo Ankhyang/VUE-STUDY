@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-input v-model="inputTodo" placeholder="请输入选项" @keyup.enter="addTodo" class="header-input"></el-input>
+    <el-input v-model="inputTodo" placeholder="请输入选项" @change="add" class="header-input"/>
   </div>
 </template>
 
@@ -12,7 +12,7 @@ export default {
     }
   },
   methods: {
-    addTodo () {
+    add () {
       // 获取输入的数据
       const inputTodo = this.inputTodo.trim()
       if (!inputTodo) {
@@ -25,6 +25,7 @@ export default {
         complete: false
       }
       this.$store.dispatch('addTodo', todo)
+      this.inputTodo = ''
     }
   }
 }
@@ -32,6 +33,6 @@ export default {
 
 <style scoped>
   .header-input{
-    width: 560px !important;
+    width: 500px !important;
   }
 </style>
