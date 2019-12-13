@@ -1,8 +1,8 @@
 <template>
   <div>
-    <li class="todo_item">
-      <el-checkbox name="type">{{todo.title}}</el-checkbox>
-      <button class="btn btn-danger" style="display:none">删除</button>
+    <li :style="{background: bgColor}" class="todo_item" @mouseenter="handleEnter(true)" @mouseleave="handleEnter(false)">
+      <el-checkbox v-model="todo.complete">{{todo.title}}</el-checkbox>
+      <el-button type="danger" v-show="isShow" size="mini" @click="deleteItem">删除</el-button>
     </li>
   </div>
 </template>
@@ -15,7 +15,22 @@ export default {
   },
   data () {
     return {
-
+      bgColor: '#ffffff',
+      isShow: false
+    }
+  },
+  methods: {
+    deleteItem () {
+      this.$store.dispatch('deleteItem', this.index)
+    },
+    handleEnter (enter) {
+      if (enter) {
+        this.bgColor = '#fcfcfc'
+        this.isShow = true
+      } else {
+        this.bgColor = '#ffffff'
+        this.isShow = false
+      }
     }
   }
 }
@@ -35,19 +50,16 @@ export default {
     cursor: pointer;
   }
 
+  li button{
+    margin-left: 80%;
+  }
+
   li label li input {
     vertical-align: middle;
     margin-right: 6px;
     position: relative;
     top: -1px;
   }
-
-  li button {
-    float: right;
-    display: none;
-    margin-top: 3px;
-  }
-
   li:before {
     content: initial;
   }

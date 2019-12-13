@@ -2,17 +2,20 @@
   <div id="app">
     <todoHeader/>
     <todoList/>
+    <todoFooter/>
   </div>
 </template>
 
 <script>
 import todoHeader from './components/todoHeader'
 import todoList from './components/todoList'
+import todoFooter from './components/todoFooter'
 export default {
   name: 'App',
   components: {
     todoHeader,
-    todoList
+    todoList,
+    todoFooter
   }
 }
 </script>
