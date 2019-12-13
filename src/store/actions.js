@@ -1,4 +1,4 @@
-import {ADD_TODO, SELECT_ALL, DELETE_COMPLETE_TODOS, DELETE_ITEM} from './mutation-type'
+import {ADD_TODO, SELECT_ALL, DELETE_COMPLETE_TODOS, DELETE_ITEM, RECEIVE_TODOS} from './mutation-type'
 export default {
   addTodo ({commit}, todo) {
     // 提交一个comutation请求
@@ -12,5 +12,11 @@ export default {
   },
   deleteItem ({commit}, index) {
     commit(DELETE_ITEM, {index})
+  },
+  reqTodos ({commit}) {
+    // 设置延时效果
+    setTimeout(() => {
+      commit(RECEIVE_TODOS)
+    }, 2000)
   }
 }

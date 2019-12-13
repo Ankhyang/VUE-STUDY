@@ -9,12 +9,19 @@
 <script type="text/javascript">
 import {mapState} from 'vuex'
 import todoItem from './todoItem'
+import utils from '../utils/storageUtils'
 export default {
   components: {
     todoItem
   },
   computed: {
     ...mapState(['todoList'])
+  },
+  watch: {
+    todoList: {
+      deep: true, // 深度监视
+      handler: utils.saveTodos // 保存todos到LocalStroage
+    }
   }
 }
 </script>

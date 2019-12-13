@@ -16,6 +16,9 @@ export default {
     todoHeader,
     todoList,
     todoFooter
+  },
+  mounted () {
+    this.$store.dispatch('reqTodos')
   }
 }
 </script>
