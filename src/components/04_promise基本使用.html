@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04_promise基本使用</title>
+</head>
+<body>
+  <script>
+    // 1. 创建一个promise实例对象
+    let p = new Promise((resolve, reject) => {
+      // 执行异步函数
+      setTimeout(() => {
+        const time = Date.now()
+        // 如果是偶数，则执行成功
+        if (time %2 == 0) {
+          resolve('执行成功，time = ' + time)
+        } else {
+          // 奇数则执行失败
+          reject('执行失败, time = ' + time) 
+        }
+      }, 1000)
+    })
+    p.then(
+      value => { // 成功之后的回调 onResolved
+        console.log('成功后的数据， '+ value)
+      }, 
+      reason => { // 失败之后的回调 onRejected
+        console.log('失败后的数据， '+ reason)
+      }
+    )
+  </script>
+</body>
+</html>
