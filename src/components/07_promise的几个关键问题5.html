@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>promise的几个关键问题</title>
 </head>
+
 <body>
   <script>
     /* 
@@ -16,7 +18,22 @@
       (1)当使用promise的then链式调用时, 在中间中断, 不再调用后面的回调函数
       (2)办法: 在回调函数中返回一个pendding状态的promise对象
     */
+    setTimeout(function () {
+      console.log('定时器开始啦')
+    });
+
+    new Promise(function (resolve) {
+      console.log('马上执行for循环啦');
+      for (var i = 0; i < 10000; i++) {
+        i == 99 && resolve();
+      }
+    }).then(function () {
+      console.log('执行then函数啦')
+    });
+
+    console.log('代码执行结束');
 
   </script>
 </body>
+
 </html>

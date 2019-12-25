@@ -5,6 +5,19 @@
   <title>11_Promise相关面试题1</title>
 </head>
 <body>
-
+  <script>
+    setTimeout(()=>{ 
+      console.log(1)
+       },0)
+    Promise.resolve().then(()=>{ 
+      console.log(2) 
+    })
+    Promise.resolve().then(()=>{ 
+      console.log(4) 
+    })
+    console.log(3)
+    // 先微队列再宏队列
+    // 3 2 4 1 
+  </script>
 </body>
 </html>
