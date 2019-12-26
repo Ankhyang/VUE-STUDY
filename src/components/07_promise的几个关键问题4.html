@@ -1,19 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>promise的几个关键问题</title>
 </head>
+
 <body>
+  <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
   <script>
     /* 
     5.promise如何串连多个操作任务?
       (1)promise的then()返回一个新的promise, 可以开成then()的链式调用
       (2)通过then的链式调用串连多个同步/异步任务
     */
+    console.log('1');
+
+    setTimeout(function () {
+      console.log('2');
+      // process.nextTick(function () {
+      //   console.log('3');
+      // })
+      new Promise(function (resolve) {
+        console.log('4');
+        resolve();
+      }).then(function () {
+        console.log('5')
+      })
+    })
+    // process.nextTick(function () {
+    //   console.log('6');
+    // })
+    new Promise(function (resolve) {
+      console.log('7');
+      resolve();
+    }).then(function () {
+      console.log('8')
+    })
+
+    setTimeout(function () {
+      console.log('9');
+      // process.nextTick(function () {
+      //   console.log('10');
+      // })
+      new Promise(function (resolve) {
+        console.log('11');
+        resolve();
+      }).then(function () {
+        console.log('12')
+      })
+    })
 
   </script>
 </body>
+
 </html>
